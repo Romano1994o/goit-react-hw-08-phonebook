@@ -16,7 +16,15 @@ export const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to top, #fff 0%, #43cea2 25%, #185a9d 50%, #43cea2 75%,   #185a9d 90%, #ffffff 100%);
+  background: linear-gradient(
+    to top,
+    #fff 0%,
+    #43cea2 25%,
+    #185a9d 50%,
+    #43cea2 75%,
+    #185a9d 90%,
+    #ffffff 100%
+  );
 `;
 
 export const AppHeader = styled.h1`
