@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
-import { Field, ErrorMessage } from 'formik';
-import InputMask from 'react-input-mask';
+
+
 
 const fadeIn = keyframes`
   from {
@@ -11,84 +11,30 @@ const fadeIn = keyframes`
   }
 `;
 
-const slideIn = keyframes`
-  from {
-    transform: translateY(-10px);
-  }
-  to {
-    transform: translateY(0);
-  }
+export const StyledContactFormSection = styled.section`
+width: 100%;
+max-width: 230px;
+min-height: 300px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+padding: 0 2rem;
+background-color: rgba(0, 0, 0, 0.4);
+animation: ${fadeIn} 0.5s ease;
+position: relative;
+border-radius: 10px;
+box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+&::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  box-shadow: 0 0 1px #03e9f4, 0 0 1px #03e9f4, 0 0 1px #03e9f4, 0 0 1px #03e9f4;
+  background-clip: padding-box;
+ 
+  z-index: -1;
+}
 `;
 
-export const StyledForm = styled.form`
-  max-width: 300px;
-  margin: 0 auto;
-  animation: ${fadeIn} 0.5s ease;
-`;
-
-export const StyledLabel = styled.label`
-  display: block;
-  font-weight: bold;
-  Font-size: 18px;
-  margin-bottom: 10px;
-  animation: ${slideIn} 0.5s ease;
-`;
-
-
-
-export const StyledInput = styled(Field)`
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-export const StyledInputMask = styled(InputMask)`
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-export const StyledErrorMessage = styled(ErrorMessage)`
-  color: red;
-  font-size: 13px;
-  
-  animation: ${fadeIn} 0.5s ease;
-`;
-
-export const StyledSubmitButton = styled.button`
-  display: block;
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  transition: background-color 0.3s ease;
-  
-  &:hover {
-    background-color: #007bff; 
-  }
-
-  animation: ${fadeIn} 0.5s ease;
-
-  
-  &:disabled {
-    pointer-events: none;
-    background-color: #ccc; 
-    cursor: not-allowed; 
-  }
-`;
-
-export const StyledNotificationContent = styled.span`
-  span {
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: bold;
-    color: darkBlack;
-  }
-`;

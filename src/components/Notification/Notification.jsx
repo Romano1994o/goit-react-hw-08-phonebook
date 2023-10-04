@@ -61,9 +61,10 @@ export const Notification = ({ id, title, content, type, index, total, onHide })
             </IconWrapper>
             <div>
               <h2>{title}</h2>
+              
               <p>{content}</p>
             </div>
-            <button className="close" onClick={handleHideNotification}>
+            <button className="close" onHide={handleHideNotification}>
               <MdClose />
             </button>
           </NotificationInner>

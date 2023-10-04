@@ -1,9 +1,11 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/operations';
-import { selectIsLoading, selectFilteredContacts } from 'redux/selectors';
-import { showNotification, hideNotification } from 'redux/notificationSlice';
+import { deleteContact } from 'redux/contacts/operations';
+import { selectIsLoading, selectFilteredContacts } from 'redux/contacts/selectors';
+import { showNotification, hideNotification } from 'redux/notification/notificationSlice';
+import { Notification } from './../Notification/Notification';
+import { selectNotification} from './../../redux/notification/selector';
 import { FaTrash } from 'react-icons/fa';
 import {
   ContactListContainer,
@@ -12,13 +14,14 @@ import {
   TableCell,
   TableRow,
   DeleteButton,
-  StyledNotificationContent,
+ 
 } from './ContactList.styled';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const contacts = useSelector(selectFilteredContacts);
+  const notifications = useSelector(selectNotification);
 
   const handleDelete = (id, name) => {
     dispatch(deleteContact(id));
@@ -28,19 +31,36 @@ export const ContactList = () => {
         title: 'Success',
         type: 'success',
         content: (
-          <StyledNotificationContent>
-            Contact <span>{name}</span> has been deleted successfully
-          </StyledNotificationContent>
+          <>
+            Contact <b>{name}</b> has been deleted successfully
+          </>
         ),
       })
     );
-    setTimeout(() => {
-      dispatch(hideNotification());
+    setTimeout((id) => {
+      dispatch(hideNotification(id));
     }, 5000);
+  };
+  const handleHideNotification = id => {
+    dispatch(hideNotification(id));
   };
 
   return (
+    <>
+      {notifications &&
+        notifications.map((notification, index) => (
+          <Notification
+            key={`${notification.id}-${index}`}
+            id={notification.id}
+            type={notification.type}
+            title={notification.title}
+            content={notification.content}
+            onHide={handleHideNotification}
+          />
+        ))}
+
     <ContactListContainer>
+      
       <StyledTable>
         <thead>
           <tr>
@@ -53,7 +73,7 @@ export const ContactList = () => {
           {contacts.map((contact) => (
             <TableRow key={contact.id}>
               <TableCell>{contact.name}</TableCell>
-              <TableCell>{contact.phone}</TableCell>
+              <TableCell>{contact.number}</TableCell>
               <TableCell>
                 <DeleteButton
                   onClick={() => handleDelete(contact.id, contact.name)}
@@ -67,5 +87,6 @@ export const ContactList = () => {
         </tbody>
       </StyledTable>
     </ContactListContainer>
+    </>
   );
 };

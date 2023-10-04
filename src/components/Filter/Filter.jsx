@@ -5,7 +5,7 @@ import {
   FilterInput,
 } from './Filter.styled';
 import { setFilter } from 'redux/filterSlice';
-import {selectFilter } from 'redux/selectors';
+import {selectFilter } from 'redux/contacts/selectors';
 
 export const Filter = () => {
 

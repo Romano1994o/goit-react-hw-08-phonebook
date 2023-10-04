@@ -51,13 +51,13 @@ export const GradientBorder = styled.div`
 `;
 
 export const NotificationsContainer = styled.div`
-  --width: 22rem;
+  --max-width: 15rem;
   --height: 5rem;
   --gap: 1rem;
 
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 20%;
+  right: 5%;
   pointer-events: none;
 
   &:hover {
@@ -112,17 +112,22 @@ export const NotificationInner = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  max-width: 16.5rem;
+  max-width: 13rem;
 
 
   h2 {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   p {
-    margin-top: 0.5rem;
+    margin-top: 0.1rem;
     font-size: 0.7rem;
+    b{
+      
+      margin-right: 0.5rem;
+      font-size: 0.8rem;
+    }
 
   }
   }
@@ -145,10 +150,10 @@ export const IconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 2.8rem; 
-  height: 2.8rem; 
+  height:2.0rem; 
   border-radius: 0.5rem;
-  margin-right: 1rem;
-  font-size: 1rem;
+  margin-right: 0.5rem;
+  font-size: 1.0rem;
   color: white;
 
   &.error {
