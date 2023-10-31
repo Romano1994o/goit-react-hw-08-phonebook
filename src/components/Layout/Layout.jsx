@@ -1,4 +1,4 @@
-import React  from 'react'; // Import useEffect for handling side effects
+import React  from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AppBar } from '../AppBar/AppBar';

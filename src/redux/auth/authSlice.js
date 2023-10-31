@@ -43,7 +43,6 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
 
-        // Dispatch a success notification for logout
       })
       .addCase(logOut.rejected, (state, action) => {
         state.error = action.payload;
